@@ -30,4 +30,14 @@ body {
   border: 2px solid red;
   width: 25%;
   height: 20vh;
+  overflow: hidden;
+}
+
+.game__mole {
+  background: url(../public/assets/mole.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  transform: translate(0, 50%);
+  transition: all 0.4s;
 }

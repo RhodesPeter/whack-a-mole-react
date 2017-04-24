@@ -69,7 +69,7 @@ class App extends Component {
       this.displayMoles();
       return;
     }
-    this.clearMoles()
+    this.clearMoles();
     this.setState({
       [activeMole]: 'translate(0, 15%)',
       lastMole: [activeMole]

@@ -1,18 +1,24 @@
 body {
-  background-color: #A97D5D;
+  background: radial-gradient(ellipse at center, #2D4B96 -500%, #172B69 550%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 .main-container {
+  letter-spacing: 0.08rem;
+  color: white;
   display: -webkit-flex;
   -webkit-align-items: center;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  height: 96vh;
+  height: 100vh;
 }
 
 .game {
-  width: 50%;
+  padding: 20px 0;
+  width: 100%;
   text-align: center;
   display: -webkit-flex;
   -webkit-align-items: center;
@@ -22,28 +28,71 @@ body {
 }
 
 .game__title {
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   width: 100%;
 }
 
+.game__score {
+  margin-top: 1.3rem;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
 .game__hole {
-  border: 2px solid red;
-  width: 25%;
-  height: 20vh;
+  margin: 2px;
   overflow: hidden;
+  width: 30vw;
+  height: 30vw;
+}
+
+.game__mound {
+  background: url(../public/assets/mole-hole.svg);
+  background-position: right 5px bottom 0px;
+  background-size: 95%;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  bottom: 99%;
+  pointer-events: none;
 }
 
 .game__mole {
-  background: url(../public/assets/mole.svg);
+  background: url(../public/assets/mole2.png);
+  background-size: 50px;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top;
   height: 100%;
   transform: translate(0, 50%);
   transition: all 0.4s;
+  cursor: pointer;
 }
 
-.button-text {
-  font-size: 2.5rem;
+.game__button-container {
+  width: 100%;
+}
+
+.game__start-button {
+  font-size: 1rem;
+  padding: 0.7rem;
+  color: #FCB942;
+  border: 2px solid #FCB942;
+  background: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.game__start-button:hover {
+  color: #FFD008;
+  border: 2px solid #FFD008;
+}
+
+.game__start-button:focus {
+  outline: none;
+}
+
+.game__start-button:active {
+  transform: translate(0, 0.5px);
 }
 
 .show {
@@ -52,4 +101,25 @@ body {
 
 .hidden {
   visibility: hidden;
+}
+
+@media screen and (min-width: 400px) {
+  .game__mole {
+    background-size: 60px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .game {
+    width: 400px;
+  }
+
+  .game__mole {
+    background-size: 65px;
+  }
+
+  .game__hole {
+    width: 120px;
+    height: 120px;
+  }
 }

@@ -1,5 +1,5 @@
 body {
-  background-color: #234087;
+  background: radial-gradient(ellipse at center, #2D4B96 -500%, #172B69 550%);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -13,7 +13,7 @@ body {
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  height: 99vh;
+  height: 100vh;
 }
 
 .game {
@@ -28,36 +28,48 @@ body {
 }
 
 .game__title {
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   width: 100%;
 }
 
 .game__score {
+  margin-top: 1.3rem;
   width: 100%;
   font-size: 0.8rem;
 }
 
 .game__hole {
-  /*background: url(../public/assets/mole-hole.png);
-  background-size: 90%;
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-position: 0 100px;*/
-  /*border: 2px solid white;*/
+  margin: 2px;
   overflow: hidden;
-  width:30vw;
+  width: 30vw;
   height: 30vw;
 }
 
+.game__mound {
+  background: url(../public/assets/mole-hole.svg);
+  background-position: right 5px bottom 0px;
+  background-size: 95%;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  bottom: 99%;
+  pointer-events: none;
+}
+
 .game__mole {
-  background: url(../public/assets/mole.png);
-  background-size: 85px;
+  background: url(../public/assets/mole2.png);
+  background-size: 50px;
   background-repeat: no-repeat;
   background-position: top;
   height: 100%;
   transform: translate(0, 50%);
   transition: all 0.4s;
   cursor: pointer;
+}
+
+.game__button-container {
+  width: 100%;
 }
 
 .game__start-button {
@@ -91,9 +103,19 @@ body {
   visibility: hidden;
 }
 
+@media screen and (min-width: 400px) {
+  .game__mole {
+    background-size: 60px;
+  }
+}
+
 @media screen and (min-width: 500px) {
   .game {
     width: 400px;
+  }
+
+  .game__mole {
+    background-size: 65px;
   }
 
   .game__hole {

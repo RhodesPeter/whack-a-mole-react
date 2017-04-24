@@ -1,18 +1,24 @@
 body {
-  background-color: #A97D5D;
+  background-color: #234087;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 .main-container {
+  letter-spacing: 0.08rem;
+  color: white;
   display: -webkit-flex;
   -webkit-align-items: center;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  height: 96vh;
+  height: 99vh;
 }
 
 .game {
-  width: 50%;
+  padding: 20px 0;
+  width: 100%;
   text-align: center;
   display: -webkit-flex;
   -webkit-align-items: center;
@@ -26,24 +32,55 @@ body {
   width: 100%;
 }
 
+.game__score {
+  width: 100%;
+  font-size: 0.8rem;
+}
+
 .game__hole {
-  border: 2px solid red;
-  width: 25%;
-  height: 20vh;
+  /*background: url(../public/assets/mole-hole.png);
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-position: 0 100px;*/
+  /*border: 2px solid white;*/
   overflow: hidden;
+  width:30vw;
+  height: 30vw;
 }
 
 .game__mole {
-  background: url(../public/assets/mole.svg);
+  background: url(../public/assets/mole.png);
+  background-size: 85px;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top;
   height: 100%;
   transform: translate(0, 50%);
   transition: all 0.4s;
+  cursor: pointer;
 }
 
-.button-text {
-  font-size: 2.5rem;
+.game__start-button {
+  font-size: 1rem;
+  padding: 0.7rem;
+  color: #FCB942;
+  border: 2px solid #FCB942;
+  background: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.game__start-button:hover {
+  color: #FFD008;
+  border: 2px solid #FFD008;
+}
+
+.game__start-button:focus {
+  outline: none;
+}
+
+.game__start-button:active {
+  transform: translate(0, 0.5px);
 }
 
 .show {
@@ -52,4 +89,15 @@ body {
 
 .hidden {
   visibility: hidden;
+}
+
+@media screen and (min-width: 500px) {
+  .game {
+    width: 400px;
+  }
+
+  .game__hole {
+    width: 120px;
+    height: 120px;
+  }
 }

@@ -17,24 +17,30 @@ class App extends Component {
       8:'translate(0, 110%)',
       9:'translate(0, 110%)',
       gameHasStarted: false,
-      score: 0
+      moleHasBeenWhacked: false,
+      score: 0,
+      lastMole: ''
     };
   }
 
   startGame(){
     if ( this.state.gameHasStarted){ return; }
-    else { this.setState({ gameHasStarted: true }); }
+    this.shakeScreen();
 
-    this.setState({ score: 0 });
+    this.setState({
+      gameHasStarted: true,
+      score: 0
+    });
+
     var x = 0;
     var intervalID = setInterval(() => {
       this.displayMoles();
-     if (++x === 15) {
-      window.clearInterval(intervalID);
-      this.clearMoles();
-      this.setState({ gameHasStarted: false });
-     }
-    }, 1000);
+      if (++x === 15) {
+        window.clearInterval(intervalID);
+        this.clearMoles();
+        this.setState({ gameHasStarted: false });
+      }
+    }, 800);
   }
 
   clearMoles(){
@@ -48,52 +54,82 @@ class App extends Component {
   }
 
   displayMoles(){
+    var activeMole = Math.ceil(Math.random() * 9);
+    if (this.state.lastMole[0] === activeMole){
+      this.displayMoles();
+      return;
+    }
     this.clearMoles()
-    var activeMole = Math.floor(Math.random() * 10);
     this.setState({
-      [activeMole]: 'translate(0, 20%)'
+      [activeMole]: 'translate(0, 10%)',
+      lastMole: [activeMole]
     });
   }
 
+  lockOutClick(){
+    window.setTimeout(() => {
+      this.setState({ moleHasBeenWhacked: false })
+    }, 800)
+  }
+
   addToScore(){
-    this.setState({ score: [parseInt(this.state.score, 10) + 1] })
+    if (this.state.moleHasBeenWhacked){ return; }
+    this.lockOutClick();
+    this.setState({
+      moleHasBeenWhacked: true,
+      score: [parseInt(this.state.score, 10) + 1]
+    });
+  }
+
+  shakeScreen(){
+    console.log('shake');
   }
 
   render() {
     return (
       <div className="main-container">
-        <button className="button-text"type="button" onClick={ this.startGame.bind(this) }>Start Game!</button>
-        <div>
-          <h3>Score: {this.state.score}</h3>
-        </div>
         <div className="game">
           <h1 className="game__title">WHACK-A-MOLE</h1>
-          <div className="game__hole">
-            <div className={"game__mole mole-1"} onClick={ this.addToScore.bind(this) } style={{transform: this.state['1']}}></div>
+          <button className="game__start-button" type="button" onClick={ this.startGame.bind(this) }>
+            Start Game!</button>
+          <div className="game__score">
+            <h1>Score: {this.state.score}</h1>
           </div>
           <div className="game__hole">
-            <div className="game__mole mole-2" style={{transform: this.state['2']}}></div>
+            <div className={"game__mole mole-1"} onClick={ this.addToScore.bind(this) }
+              style={{transform: this.state['1']}}></div>
           </div>
           <div className="game__hole">
-            <div className="game__mole mole-3" style={{transform: this.state['3']}}></div>
+            <div className="game__mole mole-2" onClick={ this.addToScore.bind(this) }
+              style={{transform: this.state['2']}}></div>
           </div>
           <div className="game__hole">
-            <div className="game__mole mole-4" style={{transform: this.state['4']}}></div>
+            <div className="game__mole mole-3" onClick={ this.addToScore.bind(this) }
+              style={{transform: this.state['3']}}></div>
           </div>
           <div className="game__hole">
-            <div className="game__mole mole-5" style={{transform: this.state['5']}}></div>
+            <div className="game__mole mole-4" onClick={ this.addToScore.bind(this) }
+              style={{transform: this.state['4']}}></div>
           </div>
           <div className="game__hole">
-            <div className="game__mole mole-6" style={{transform: this.state['6']}}></div>
+            <div className="game__mole mole-5" onClick={ this.addToScore.bind(this) }
+              style={{transform: this.state['5']}}></div>
           </div>
           <div className="game__hole">
-            <div className="game__mole mole-7" style={{transform: this.state['7']}}></div>
+            <div className="game__mole mole-6" onClick={ this.addToScore.bind(this) }
+              style={{transform: this.state['6']}}></div>
           </div>
           <div className="game__hole">
-            <div className="game__mole mole-8" style={{transform: this.state['8']}}></div>
+            <div className="game__mole mole-7" onClick={ this.addToScore.bind(this) }
+              style={{transform: this.state['7']}}></div>
           </div>
           <div className="game__hole">
-            <div className="game__mole mole-9" style={{transform: this.state['9']}}></div>
+            <div className="game__mole mole-8" onClick={ this.addToScore.bind(this) }
+              style={{transform: this.state['8']}}></div>
+          </div>
+          <div className="game__hole">
+            <div className="game__mole mole-9" onClick={ this.addToScore.bind(this) }
+              style={{transform: this.state['9']}}></div>
           </div>
         </div>
       </div>

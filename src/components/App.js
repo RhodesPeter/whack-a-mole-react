@@ -112,7 +112,7 @@ class App extends Component {
   render() {
     return (
       <div className="main-container">
-        <div className="game" style={{transform: this.state['shake']}}>
+        <div className="game" style={{webkitTransform: this.state['shake']}}>
           <h1 className="game__title">WHACK-A-MOLE</h1>
           <div className="game__button-container">
             <button className="game__start-button" type="button" onClick={ this.timeOut.bind(this, 800) }>
@@ -121,55 +121,55 @@ class App extends Component {
           </div>
           <div className="game__hole" style={{ display: this.state.display }}>
             <div className={"game__mole"} onClick={ this.addToScore.bind(this) }
-              style={{transform: this.state['1']}}>
+              style={{webkitTransform: this.state['1']}}>
             </div>
             <div className="game__mound"></div>
           </div>
           <div className="game__hole" style={{ display: this.state.display }}>
             <div className="game__mole" onClick={ this.addToScore.bind(this) }
-              style={{transform: this.state['2']}}>
+              style={{webkitTransform: this.state['2']}}>
             </div>
             <div className="game__mound"></div>
           </div>
           <div className="game__hole" style={{ display: this.state.display }}>
             <div className="game__mole" onClick={ this.addToScore.bind(this) }
-              style={{transform: this.state['3']}}>
+              style={{webkitTransform: this.state['3']}}>
             </div>
             <div className="game__mound"></div>
           </div>
           <div className="game__hole" style={{ display: this.state.display }}>
             <div className="game__mole" onClick={ this.addToScore.bind(this) }
-              style={{transform: this.state['4']}}>
+              style={{webkitTransform: this.state['4']}}>
             </div>
             <div className="game__mound"></div>
           </div>
           <div className="game__hole" style={{ display: this.state.display }}>
             <div className="game__mole" onClick={ this.addToScore.bind(this) }
-              style={{transform: this.state['5']}}>
+              style={{webkitTransform: this.state['5']}}>
             </div>
             <div className="game__mound"></div>
           </div>
           <div className="game__hole" style={{ display: this.state.display }}>
             <div className="game__mole" onClick={ this.addToScore.bind(this) }
-              style={{transform: this.state['6']}}>
+              style={{webkitTransform: this.state['6']}}>
             </div>
             <div className="game__mound"></div>
           </div>
           <div className="game__hole" style={{ display: this.state.display }}>
             <div className="game__mole" onClick={ this.addToScore.bind(this) }
-              style={{transform: this.state['7']}}>
+              style={{webkitTransform: this.state['7']}}>
             </div>
             <div className="game__mound"></div>
           </div>
           <div className="game__hole" style={{ display: this.state.display }}>
             <div className="game__mole" onClick={ this.addToScore.bind(this) }
-              style={{transform: this.state['8']}}>
+              style={{webkitTransform: this.state['8']}}>
             </div>
             <div className="game__mound"></div>
           </div>
           <div className="game__hole" style={{ display: this.state.display }}>
             <div className="game__mole" onClick={ this.addToScore.bind(this) }
-              style={{transform: this.state['9']}}>
+              style={{webkitTransform: this.state['9']}}>
             </div>
             <div className="game__mound"></div>
           </div>

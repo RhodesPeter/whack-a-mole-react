@@ -25,6 +25,7 @@ body, html {
 }
 
 .game__title {
+  -webkit-transform: translateZ(0px);
   font-size: 2.1rem;
   width: 100%;
 }

@@ -1,9 +1,10 @@
 body, html {
   background-color: #2D4B96;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .main-container {
-  letter-spacing: 0.08rem;
+  letter-spacing: 0.2rem;
   color: white;
   display: -webkit-flex;
   -webkit-align-items: center;
@@ -53,10 +54,11 @@ body, html {
   position: relative;
   bottom: 99%;
   pointer-events: none;
+  backface-visibility: hidden;
 }
 
 .game__mole {
-  background: url(../public/assets/mole2.png);
+  background-image: url(../public/assets/mole.png);
   background-size: 50px;
   background-repeat: no-repeat;
   background-position: top;
@@ -66,22 +68,37 @@ body, html {
   cursor: pointer;
 }
 
+.game__whack {
+  width: 100%;
+  height: 100%;
+}
+
+.game__cross {
+  background-image: url(../public/assets/smash.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60px;
+  width: 100%;
+  height: 100%;
+}
+
 .game__button-container {
   width: 100%;
 }
 
 .game__start-button {
   font-size: 1rem;
-  padding: 0.7rem;
-  color: #FCB942;
+  padding: 0.6rem 0.6rem 0.7rem 0.6rem;
+  color: white;
   border: 2px solid #FCB942;
   background: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: 'Amaranth', sans-serif;
+  letter-spacing: 0.13rem;
 }
 
 .game__start-button:hover {
-  color: #FFD008;
   border: 2px solid #FFD008;
 }
 
@@ -93,12 +110,25 @@ body, html {
   transform: translate(0, 0.5px);
 }
 
-.show {
-  visibility: visible;
+.game__you-scored {
+  font-size: 1.1rem;
 }
 
-.hidden {
-  visibility: hidden;
+.game__game-over {
+  background-image: url(../public/assets/wavy-border.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 250px;
+  height: 170px;
+  margin-bottom: 30px;
+}
+
+.game__game-over-header {
+  margin: 62px 0 -10px 0;
+}
+
+.no-background {
+  background: none;
 }
 
 @media screen and (min-width: 400px) {
@@ -108,6 +138,19 @@ body, html {
 }
 
 @media screen and (min-width: 500px) {
+  .game__game-over {
+    width: 320px;
+    height: 200px;
+  }
+
+  .game__game-over-header {
+    margin: 70px 0 -10px 0;
+  }
+
+  .game__cross {
+    background-size: 75px;
+  }
+
   .game {
     width: 400px;
   }

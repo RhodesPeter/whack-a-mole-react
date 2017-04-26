@@ -36,7 +36,7 @@ class App extends Component {
       direction: 'alternate',
       loop: true,
       easing: 'easeInQuad',
-      duration: 2000,
+      duration: 1600,
       scale: function(el, i, l) {
         return (l - i) + .08;
       },

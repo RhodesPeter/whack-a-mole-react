@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
+import Score from './Score.js';
+import GameOver from './GameOver.js'
 import anime from 'animejs';
 
 class App extends Component {
@@ -65,8 +67,8 @@ class App extends Component {
       score: 0
     });
 
-    var x = 0;
-    var intervalID = setInterval(() => {
+    let x = 0;
+    const intervalID = setInterval(() => {
       this.displayMoles();
       if (++x === 16) {
         window.clearInterval(intervalID);
@@ -155,10 +157,7 @@ class App extends Component {
       <div className="main-container">
         <div className="game" style={{WebkitTransform: this.state['shake']}}>
           <h1 className="game__title" style={{ margin: this.state.titleMargin }}>WHACK-A-MOLE</h1>
-          <div className="game__game-over" style={{ display: this.state.gameOver }}>
-            <h1 className="game__game-over-header" >GAME OVER!</h1>
-            <p className="game__you-scored">You scored {this.state.score}/15</p>
-          </div>
+          <GameOver context={ this }/>
           <div ref={ 'gameOver' } className="game__button-container">
             <button className="game__start-button" type="button"
               onClick={ this.timeOut.bind(this, 800) } style={{ display: this.state.buttonDisplay }}>
@@ -237,9 +236,7 @@ class App extends Component {
               <div className="game__mound"></div>
             </div>
           </div>
-          <div className="game__score" style={{ display: this.state.display }}>
-            <h1>SCORE: {this.state.score}</h1>
-          </div>
+          <Score context={ this }/>
         </div>
       </div>
     );

@@ -154,6 +154,19 @@ class App extends Component {
     shake();
   }
 
+  createMoleHoles(){
+    var holes = [];
+    for(let i = 1; i <= 9; i++){
+      holes.push(<MoleHole key={ i } context={ this.state }
+        onClick={ this.addToScore.bind(this) } holeNumber={ i }/>);
+    }
+    return (
+      <div className="board">
+        { holes }
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="main-container">
@@ -163,15 +176,7 @@ class App extends Component {
           <div ref={ 'gameOver' } className="game__button-container">
             <StartButton context={ this.state } onClick={ this.timeOut.bind(this) }/>
           </div>
-          <MoleHole context={ this.state } onClick={ this.addToScore.bind(this) } holeNumber={ '1' }/>
-          <MoleHole context={ this.state } onClick={ this.addToScore.bind(this) } holeNumber={ '2' }/>
-          <MoleHole context={ this.state } onClick={ this.addToScore.bind(this) } holeNumber={ '3' }/>
-          <MoleHole context={ this.state } onClick={ this.addToScore.bind(this) } holeNumber={ '4' }/>
-          <MoleHole context={ this.state } onClick={ this.addToScore.bind(this) } holeNumber={ '5' }/>
-          <MoleHole context={ this.state } onClick={ this.addToScore.bind(this) } holeNumber={ '6' }/>
-          <MoleHole context={ this.state } onClick={ this.addToScore.bind(this) } holeNumber={ '7' }/>
-          <MoleHole context={ this.state } onClick={ this.addToScore.bind(this) } holeNumber={ '8' }/>
-          <MoleHole context={ this.state } onClick={ this.addToScore.bind(this) } holeNumber={ '9' }/>
+          { this.createMoleHoles() }
           <Score context={ this.state }/>
         </div>
       </div>

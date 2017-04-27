@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Score from './Score.js';
-import GameOver from './GameOver.js'
 import anime from 'animejs';
+import Score from './Score.js';
+import GameOver from './GameOver.js';
+import StartButton from './StartButton.js';
+import MoleHole from './MoleHole.js';
 
 class App extends Component {
 
@@ -74,16 +76,16 @@ class App extends Component {
         window.clearInterval(intervalID);
         this.clearMoles();
         this.setState({ gameHasStarted: false });
-      window.setTimeout(() => {
-        this.setState({
-          display: 'none',
-          gameOver: 'block',
-          buttonMessage: 'Play again',
-          buttonDisplay: 'inline-block',
-          titleMargin: '15px'
-        });
-        this.animate(this.refs.gameOver);
-      }, 850)
+        window.setTimeout(() => {
+          this.setState({
+            display: 'none',
+            gameOver: 'block',
+            buttonMessage: 'Play again',
+            buttonDisplay: 'inline-block',
+            titleMargin: '15px'
+          });
+          this.animate(this.refs.gameOver);
+        }, 850)
       }
     }, 700);
   }
@@ -152,6 +154,19 @@ class App extends Component {
     shake();
   }
 
+  createMoleHoles(){
+    var holes = [];
+    for(let i = 1; i <= 9; i++){
+      holes.push(<MoleHole key={ i } context={ this.state }
+        onClick={ this.addToScore.bind(this) } holeNumber={ i }/>);
+    }
+    return (
+      <div className="board">
+        { holes }
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="main-container">
@@ -159,84 +174,10 @@ class App extends Component {
           <h1 className="game__title" style={{ margin: this.state.titleMargin }}>WHACK-A-MOLE</h1>
           <GameOver context={ this }/>
           <div ref={ 'gameOver' } className="game__button-container">
-            <button className="game__start-button" type="button"
-              onClick={ this.timeOut.bind(this, 800) } style={{ display: this.state.buttonDisplay }}>
-              {this.state.buttonMessage}
-            </button>
+            <StartButton context={ this.state } onClick={ this.timeOut.bind(this) }/>
           </div>
-          <div className="game__hole" style={{ display: this.state.display }}>
-            <div className="game__whack">
-              <div className={"game__mole"} onClick={ this.addToScore.bind(this) }
-                style={{WebkitTransform: this.state['1']}}>
-              </div>
-              <div className="game__mound"></div>
-            </div>
-          </div>
-          <div className="game__hole" style={{ display: this.state.display }}>
-            <div className="game__whack">
-              <div className={"game__mole"} onClick={ this.addToScore.bind(this) }
-                style={{WebkitTransform: this.state['2']}}>
-              </div>
-              <div className="game__mound"></div>
-            </div>
-          </div>
-          <div className="game__hole" style={{ display: this.state.display }}>
-            <div className="game__whack">
-              <div className={"game__mole"} onClick={ this.addToScore.bind(this) }
-                style={{WebkitTransform: this.state['3']}}>
-              </div>
-              <div className="game__mound"></div>
-            </div>
-          </div>
-          <div className="game__hole" style={{ display: this.state.display }}>
-            <div className="game__whack">
-              <div className={"game__mole"} onClick={ this.addToScore.bind(this) }
-                style={{WebkitTransform: this.state['4']}}>
-              </div>
-              <div className="game__mound"></div>
-            </div>
-          </div>
-          <div className="game__hole" style={{ display: this.state.display }}>
-            <div className="game__whack">
-              <div className={"game__mole"} onClick={ this.addToScore.bind(this) }
-                style={{WebkitTransform: this.state['5']}}>
-              </div>
-              <div className="game__mound"></div>
-            </div>
-          </div>
-          <div className="game__hole" style={{ display: this.state.display }}>
-            <div className="game__whack">
-              <div className={"game__mole"} onClick={ this.addToScore.bind(this) }
-                style={{WebkitTransform: this.state['6']}}>
-              </div>
-              <div className="game__mound"></div>
-            </div>
-          </div>
-          <div className="game__hole" style={{ display: this.state.display }}>
-            <div className="game__whack">
-              <div className={"game__mole"} onClick={ this.addToScore.bind(this) }
-                style={{WebkitTransform: this.state['7']}}>
-              </div>
-              <div className="game__mound"></div>
-            </div>
-          </div>
-          <div className="game__hole" style={{ display: this.state.display }}>
-            <div className="game__whack">
-              <div className={"game__mole"} onClick={ this.addToScore.bind(this) }
-                style={{WebkitTransform: this.state['8']}}>
-              </div>
-              <div className="game__mound"></div>
-            </div>
-          </div>
-          <div className="game__hole" style={{ display: this.state.display }}>
-            <div className="game__whack">
-              <div className={"game__mole"} onClick={ this.addToScore.bind(this) }
-                style={{WebkitTransform: this.state['9']}}>
-              </div>
-              <div className="game__mound"></div>
-            </div>
-          </div>
-          <Score context={ this }/>
+          { this.createMoleHoles() }
+          <Score context={ this.state }/>
         </div>
       </div>
     );

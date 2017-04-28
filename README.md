@@ -1,4 +1,4 @@
-# Whack-a-mole Game
+# Whack-A-Mole Game
 You can whack a mole [here](https://whack-a-mole-react.herokuapp.com/).
 
 <img src="https://github.com/RhodesPeter/whack-a-mole-react/blob/master/public/assets/illustration-for-readme.png" width="320">
